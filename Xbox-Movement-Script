@@ -1,0 +1,28 @@
+using UnityEngine;
+
+public class XboxControllerMovement : MonoBehaviour
+{
+    public float speed = 5.0f; // movement speed
+    public bool invert = false; // option to invert the movement
+
+    // Update is called once per frame
+    void Update()
+    {
+        // get the horizontal and vertical axis input
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+
+        // invert the movement if the invert option is enabled
+        if (invert)
+        {
+            horizontal *= 1;
+            vertical *= 1;
+        }
+
+        // calculate the movement vector using the input axes and the speed
+        Vector3 movement = new Vector3(horizontal, 0, vertical) * speed * Time.deltaTime;
+
+        // move the object in the direction of the movement vector
+        transform.position += movement;
+    }
+}
