@@ -1,0 +1,19 @@
+using UnityEngine;
+
+public class XboxControllerCamera : MonoBehaviour
+{
+    public float sensitivity = 5.0f; // sensitivity of the camera movement
+
+    void Update()
+    {
+        // get the input from the right stick on the Xbox controller
+        float horizontal = Input.GetAxis("RightStickHorizontal");
+        float vertical = Input.GetAxis("RightStickVertical");
+
+        // calculate the rotation vector based on the input and sensitivity
+        Vector3 rotation = new Vector3(-vertical, horizontal, 0) * sensitivity;
+
+        // rotate the camera by the rotation vector
+        transform.eulerAngles += rotation;
+    }
+}
